@@ -6,6 +6,8 @@ import com.bridgelabz.greetingapplicationservice.repository.GreetingAppRepositor
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class GreetingService {
     private static String template="Hello %s";
@@ -27,9 +29,13 @@ public class GreetingService {
         repo.save(newGreeting);
         return newGreeting;
     }
-    public String getData(Integer id) {
+    public String getDataById(Integer id) {
         Greeting newGreeting=repo.getById(id);
         return newGreeting.getContent();
+    }
+    public List<Greeting> getAllData() {
+        List<Greeting>list=repo.findAll();
+        return list;
     }
 }
 
